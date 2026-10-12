@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "reflective-rag"
+version = "0.1.0"
+description = "Corrective RAG (CRAG) and Self-RAG implemented with LangGraph, with an evaluation harness on HotpotQA."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Muhammad Hasnat" }]
+keywords = ["rag", "crag", "self-rag", "langgraph", "langchain", "llm", "ollama", "retrieval"]
+dependencies = ["langgraph>=0.3", "langchain>=0.3", "langchain-core>=0.3", "langchain-ollama>=0.2"]
+
+[project.optional-dependencies]
+openai = ["langchain-openai"]
+anthropic = ["langchain-anthropic"]
+eval = ["datasets>=3"]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+rrag = "reflective_rag.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/hasnat23/reflective-rag"
+
+
+[tool.ruff]
+line-length = 130
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
